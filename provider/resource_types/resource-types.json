@@ -1,0 +1,146 @@
+[
+  {
+    "ResourceName": "DigitalOcean::Account",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanAccount)",
+    "SteampipeTable": "digitalocean_account",
+    "Model": "DigitalOceanAccount"
+  },
+  {
+    "ResourceName": "DigitalOcean::Action",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanAction)",
+    "SteampipeTable": "digitalocean_action",
+    "Model": "DigitalOceanAction"
+  },
+  {
+    "ResourceName": "DigitalOcean::AlertPolicy",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanAlertPolicy)",
+    "SteampipeTable": "digitalocean_alert_policy",
+    "Model": "DigitalOceanAlertPolicy"
+  },
+  {
+    "ResourceName": "DigitalOcean::App",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanApp)",
+    "SteampipeTable": "digitalocean_app",
+    "Model": "DigitalOceanApp"
+  },
+  {
+    "ResourceName": "DigitalOcean::Balance",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanBalance)",
+    "SteampipeTable": "digitalocean_balance",
+    "Model": "DigitalOceanBalance"
+  },
+  {
+    "ResourceName": "DigitalOcean::Bill",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanBill)",
+    "SteampipeTable": "digitalocean_bill",
+    "Model": "DigitalOceanBill"
+  },
+  {
+    "ResourceName": "DigitalOcean::ContainerRegistry",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanContainerRegistry)",
+    "SteampipeTable": "digitalocean_container_registry",
+    "Model": "DigitalOceanContainerRegistry"
+  },
+  {
+    "ResourceName": "DigitalOcean::Database",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanDatabase)",
+    "SteampipeTable": "digitalocean_database",
+    "Model": "DigitalOceanDatabase"
+  },
+  {
+    "ResourceName": "DigitalOcean::Domain",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanDomain)",
+    "SteampipeTable": "digitalocean_domain",
+    "Model": "DigitalOceanDomain"
+  },
+  {
+    "ResourceName": "DigitalOcean::Droplet",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanDroplet)",
+    "SteampipeTable": "digitalocean_droplet",
+    "Model": "DigitalOceanDroplet"
+  },
+  {
+    "ResourceName": "DigitalOcean::Firewall",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanFirewall)",
+    "SteampipeTable": "digitalocean_firewall",
+    "Model": "DigitalOceanFirewall"
+  },
+  {
+    "ResourceName": "DigitalOcean::FloatingIP",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanFloatingIP)",
+    "SteampipeTable": "digitalocean_floating_ip",
+    "Model": "DigitalOceanFloatingIP"
+  },
+  {
+    "ResourceName": "DigitalOcean::Image",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanImage)",
+    "SteampipeTable": "digitalocean_image",
+    "Model": "DigitalOceanImage"
+  },
+  {
+    "ResourceName": "DigitalOcean::Key",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanKey)",
+    "SteampipeTable": "digitalocean_key",
+    "Model": "DigitalOceanKey"
+  },
+  {
+    "ResourceName": "DigitalOcean::KubernetesCluster",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanKubernetesCluster)",
+    "SteampipeTable": "digitalocean_kubernetes_cluster",
+    "Model": "DigitalOceanKubernetesCluster"
+  },
+  {
+    "ResourceName": "DigitalOcean::KubernetesNodePool",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanKubernetesNodePool)",
+    "SteampipeTable": "digitalocean_kubernetes_node_pool",
+    "Model": "DigitalOceanKubernetesNodePool"
+  },
+  {
+    "ResourceName": "DigitalOcean::LoadBalancer",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanLoadBalancer)",
+    "SteampipeTable": "digitalocean_load_balancer",
+    "Model": "DigitalOceanLoadBalancer"
+  },
+  {
+    "ResourceName": "DigitalOcean::Project",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanProject)",
+    "SteampipeTable": "digitalocean_project",
+    "Model": "DigitalOceanProject"
+  },
+  {
+    "ResourceName": "DigitalOcean::Region",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanRegion)",
+    "SteampipeTable": "digitalocean_region",
+    "Model": "DigitalOceanRegion"
+  },
+  {
+    "ResourceName": "DigitalOcean::Size",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanSize)",
+    "SteampipeTable": "digitalocean_size",
+    "Model": "DigitalOceanSize"
+  },
+  {
+    "ResourceName": "DigitalOcean::Snapshot",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanSnapshot)",
+    "SteampipeTable": "digitalocean_snapshot",
+    "Model": "DigitalOceanSnapshot"
+  },
+  {
+    "ResourceName": "DigitalOcean::Tag",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanTag)",
+    "SteampipeTable": "digitalocean_tag",
+    "Model": "DigitalOceanTag"
+  },
+  {
+    "ResourceName": "DigitalOcean::Volume",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanVolume)",
+    "SteampipeTable": "digitalocean_volume",
+    "Model": "DigitalOceanVolume"
+  },
+  {
+    "ResourceName": "DigitalOcean::VPC",
+    "ListDescriber": "DescribeByIntegration(describer.DigitalOceanVPC)",
+    "SteampipeTable": "digitalocean_vpc",
+    "Model": "DigitalOceanVPC"
+  }
+]
