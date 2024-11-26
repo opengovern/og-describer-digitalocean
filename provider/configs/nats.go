@@ -1,6 +1,6 @@
 package configs
 
-import "github.com/opengovern/opengovernance/services/integration/integration-type/digitalocean-team/configs"
+import "github.com/opengovern/opencomply/services/integration/integration-type/digitalocean-team/configs"
 
 const (
 	StreamName           = configs.StreamName
