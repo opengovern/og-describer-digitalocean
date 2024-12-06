@@ -241,9 +241,15 @@ func DigitalOceanBill(ctx context.Context, creds *configs.IntegrationCredentials
 		}
 
 		for _, bill := range bills.BillingHistory {
+			id := bill.Date.Format("2006-01-02")
+			if bill.InvoiceID != nil {
+				id = *bill.InvoiceID
+			} else if bill.InvoiceUUID != nil {
+				id = *bill.InvoiceUUID
+			}
 			resource := models.Resource{
-				ID:   fmt.Sprintf("do:%s:bill:%s", accountUUID, *bill.InvoiceUUID),
-				Name: *bill.InvoiceUUID,
+				ID:   fmt.Sprintf("do:%s:bill:%s", accountUUID, id),
+				Name: id,
 				Description: model.DigitalOceanBillDescription{
 					Bill: bill,
 				},
