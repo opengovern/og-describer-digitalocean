@@ -19,7 +19,7 @@ type Client struct {
 type DigitalOceanAccount struct {
 	ResourceID      string                                      `json:"resource_id"`
 	PlatformID      string                                      `json:"platform_id"`
-	Description     digitalocean.DigitalOceanAccountDescription `json:"description"`
+	Description     digitalocean.DigitalOceanAccountDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                       `json:"metadata"`
 	DescribedBy     string                                      `json:"described_by"`
 	ResourceType    string                                      `json:"resource_type"`
@@ -124,7 +124,7 @@ func ListDigitalOceanAccount(ctx context.Context, d *plugin.QueryData, _ *plugin
 		plugin.Logger(ctx).Error("ListDigitalOceanAccount NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanAccount GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -140,7 +140,7 @@ func ListDigitalOceanAccount(ctx context.Context, d *plugin.QueryData, _ *plugin
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanAccountPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanAccountFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanAccountPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanAccountFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanAccount NewDigitalOceanAccountPaginator", "error", err)
 		return nil, err
@@ -193,7 +193,7 @@ func GetDigitalOceanAccount(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -207,7 +207,7 @@ func GetDigitalOceanAccount(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanAccountPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanAccountFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanAccountPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanAccountFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -238,7 +238,7 @@ func GetDigitalOceanAccount(ctx context.Context, d *plugin.QueryData, _ *plugin.
 type DigitalOceanAction struct {
 	ResourceID      string                                     `json:"resource_id"`
 	PlatformID      string                                     `json:"platform_id"`
-	Description     digitalocean.DigitalOceanActionDescription `json:"description"`
+	Description     digitalocean.DigitalOceanActionDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                      `json:"metadata"`
 	DescribedBy     string                                     `json:"described_by"`
 	ResourceType    string                                     `json:"resource_type"`
@@ -340,7 +340,7 @@ func ListDigitalOceanAction(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		plugin.Logger(ctx).Error("ListDigitalOceanAction NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanAction GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -356,7 +356,7 @@ func ListDigitalOceanAction(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanActionPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanActionFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanActionPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanActionFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanAction NewDigitalOceanActionPaginator", "error", err)
 		return nil, err
@@ -406,7 +406,7 @@ func GetDigitalOceanAction(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -420,7 +420,7 @@ func GetDigitalOceanAction(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanActionPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanActionFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanActionPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanActionFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -451,7 +451,7 @@ func GetDigitalOceanAction(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 type DigitalOceanAlertPolicy struct {
 	ResourceID      string                                          `json:"resource_id"`
 	PlatformID      string                                          `json:"platform_id"`
-	Description     digitalocean.DigitalOceanAlertPolicyDescription `json:"description"`
+	Description     digitalocean.DigitalOceanAlertPolicyDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                           `json:"metadata"`
 	DescribedBy     string                                          `json:"described_by"`
 	ResourceType    string                                          `json:"resource_type"`
@@ -558,7 +558,7 @@ func ListDigitalOceanAlertPolicy(ctx context.Context, d *plugin.QueryData, _ *pl
 		plugin.Logger(ctx).Error("ListDigitalOceanAlertPolicy NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanAlertPolicy GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -574,7 +574,7 @@ func ListDigitalOceanAlertPolicy(ctx context.Context, d *plugin.QueryData, _ *pl
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanAlertPolicyPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanAlertPolicyFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanAlertPolicyPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanAlertPolicyFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanAlertPolicy NewDigitalOceanAlertPolicyPaginator", "error", err)
 		return nil, err
@@ -629,7 +629,7 @@ func GetDigitalOceanAlertPolicy(ctx context.Context, d *plugin.QueryData, _ *plu
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -643,7 +643,7 @@ func GetDigitalOceanAlertPolicy(ctx context.Context, d *plugin.QueryData, _ *plu
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanAlertPolicyPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanAlertPolicyFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanAlertPolicyPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanAlertPolicyFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -674,7 +674,7 @@ func GetDigitalOceanAlertPolicy(ctx context.Context, d *plugin.QueryData, _ *plu
 type DigitalOceanApp struct {
 	ResourceID      string                                  `json:"resource_id"`
 	PlatformID      string                                  `json:"platform_id"`
-	Description     digitalocean.DigitalOceanAppDescription `json:"description"`
+	Description     digitalocean.DigitalOceanAppDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                   `json:"metadata"`
 	DescribedBy     string                                  `json:"described_by"`
 	ResourceType    string                                  `json:"resource_type"`
@@ -785,7 +785,7 @@ func ListDigitalOceanApp(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		plugin.Logger(ctx).Error("ListDigitalOceanApp NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanApp GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -801,7 +801,7 @@ func ListDigitalOceanApp(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanAppPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanAppFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanAppPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanAppFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanApp NewDigitalOceanAppPaginator", "error", err)
 		return nil, err
@@ -860,7 +860,7 @@ func GetDigitalOceanApp(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -874,7 +874,7 @@ func GetDigitalOceanApp(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanAppPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanAppFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanAppPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanAppFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -905,7 +905,7 @@ func GetDigitalOceanApp(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 type DigitalOceanBalance struct {
 	ResourceID      string                                      `json:"resource_id"`
 	PlatformID      string                                      `json:"platform_id"`
-	Description     digitalocean.DigitalOceanBalanceDescription `json:"description"`
+	Description     digitalocean.DigitalOceanBalanceDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                       `json:"metadata"`
 	DescribedBy     string                                      `json:"described_by"`
 	ResourceType    string                                      `json:"resource_type"`
@@ -1005,7 +1005,7 @@ func ListDigitalOceanBalance(ctx context.Context, d *plugin.QueryData, _ *plugin
 		plugin.Logger(ctx).Error("ListDigitalOceanBalance NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanBalance GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -1021,7 +1021,7 @@ func ListDigitalOceanBalance(ctx context.Context, d *plugin.QueryData, _ *plugin
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanBalancePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanBalanceFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanBalancePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanBalanceFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanBalance NewDigitalOceanBalancePaginator", "error", err)
 		return nil, err
@@ -1069,7 +1069,7 @@ func GetDigitalOceanBalance(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -1083,7 +1083,7 @@ func GetDigitalOceanBalance(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanBalancePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanBalanceFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanBalancePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanBalanceFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -1114,7 +1114,7 @@ func GetDigitalOceanBalance(ctx context.Context, d *plugin.QueryData, _ *plugin.
 type DigitalOceanBill struct {
 	ResourceID      string                                   `json:"resource_id"`
 	PlatformID      string                                   `json:"platform_id"`
-	Description     digitalocean.DigitalOceanBillDescription `json:"description"`
+	Description     digitalocean.DigitalOceanBillDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                    `json:"metadata"`
 	DescribedBy     string                                   `json:"described_by"`
 	ResourceType    string                                   `json:"resource_type"`
@@ -1216,7 +1216,7 @@ func ListDigitalOceanBill(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 		plugin.Logger(ctx).Error("ListDigitalOceanBill NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanBill GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -1232,7 +1232,7 @@ func ListDigitalOceanBill(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanBillPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanBillFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanBillPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanBillFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanBill NewDigitalOceanBillPaginator", "error", err)
 		return nil, err
@@ -1282,7 +1282,7 @@ func GetDigitalOceanBill(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -1296,7 +1296,7 @@ func GetDigitalOceanBill(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanBillPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanBillFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanBillPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanBillFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -1327,7 +1327,7 @@ func GetDigitalOceanBill(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 type DigitalOceanContainerRegistry struct {
 	ResourceID      string                                                `json:"resource_id"`
 	PlatformID      string                                                `json:"platform_id"`
-	Description     digitalocean.DigitalOceanContainerRegistryDescription `json:"description"`
+	Description     digitalocean.DigitalOceanContainerRegistryDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                                 `json:"metadata"`
 	DescribedBy     string                                                `json:"described_by"`
 	ResourceType    string                                                `json:"resource_type"`
@@ -1428,7 +1428,7 @@ func ListDigitalOceanContainerRegistry(ctx context.Context, d *plugin.QueryData,
 		plugin.Logger(ctx).Error("ListDigitalOceanContainerRegistry NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanContainerRegistry GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -1444,7 +1444,7 @@ func ListDigitalOceanContainerRegistry(ctx context.Context, d *plugin.QueryData,
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanContainerRegistryPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanContainerRegistryFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanContainerRegistryPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanContainerRegistryFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanContainerRegistry NewDigitalOceanContainerRegistryPaginator", "error", err)
 		return nil, err
@@ -1493,7 +1493,7 @@ func GetDigitalOceanContainerRegistry(ctx context.Context, d *plugin.QueryData, 
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -1507,7 +1507,7 @@ func GetDigitalOceanContainerRegistry(ctx context.Context, d *plugin.QueryData, 
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanContainerRegistryPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanContainerRegistryFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanContainerRegistryPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanContainerRegistryFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -1538,7 +1538,7 @@ func GetDigitalOceanContainerRegistry(ctx context.Context, d *plugin.QueryData, 
 type DigitalOceanDatabase struct {
 	ResourceID      string                                       `json:"resource_id"`
 	PlatformID      string                                       `json:"platform_id"`
-	Description     digitalocean.DigitalOceanDatabaseDescription `json:"description"`
+	Description     digitalocean.DigitalOceanDatabaseDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                        `json:"metadata"`
 	DescribedBy     string                                       `json:"described_by"`
 	ResourceType    string                                       `json:"resource_type"`
@@ -1667,7 +1667,7 @@ func ListDigitalOceanDatabase(ctx context.Context, d *plugin.QueryData, _ *plugi
 		plugin.Logger(ctx).Error("ListDigitalOceanDatabase NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanDatabase GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -1683,7 +1683,7 @@ func ListDigitalOceanDatabase(ctx context.Context, d *plugin.QueryData, _ *plugi
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanDatabasePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanDatabaseFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanDatabasePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanDatabaseFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanDatabase NewDigitalOceanDatabasePaginator", "error", err)
 		return nil, err
@@ -1760,7 +1760,7 @@ func GetDigitalOceanDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -1774,7 +1774,7 @@ func GetDigitalOceanDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanDatabasePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanDatabaseFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanDatabasePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanDatabaseFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -1805,7 +1805,7 @@ func GetDigitalOceanDatabase(ctx context.Context, d *plugin.QueryData, _ *plugin
 type DigitalOceanDomain struct {
 	ResourceID      string                                     `json:"resource_id"`
 	PlatformID      string                                     `json:"platform_id"`
-	Description     digitalocean.DigitalOceanDomainDescription `json:"description"`
+	Description     digitalocean.DigitalOceanDomainDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                      `json:"metadata"`
 	DescribedBy     string                                     `json:"described_by"`
 	ResourceType    string                                     `json:"resource_type"`
@@ -1905,7 +1905,7 @@ func ListDigitalOceanDomain(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		plugin.Logger(ctx).Error("ListDigitalOceanDomain NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanDomain GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -1921,7 +1921,7 @@ func ListDigitalOceanDomain(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanDomainPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanDomainFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanDomainPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanDomainFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanDomain NewDigitalOceanDomainPaginator", "error", err)
 		return nil, err
@@ -1969,7 +1969,7 @@ func GetDigitalOceanDomain(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -1983,7 +1983,7 @@ func GetDigitalOceanDomain(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanDomainPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanDomainFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanDomainPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanDomainFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -2014,7 +2014,7 @@ func GetDigitalOceanDomain(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 type DigitalOceanDroplet struct {
 	ResourceID      string                                      `json:"resource_id"`
 	PlatformID      string                                      `json:"platform_id"`
-	Description     digitalocean.DigitalOceanDropletDescription `json:"description"`
+	Description     digitalocean.DigitalOceanDropletDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                       `json:"metadata"`
 	DescribedBy     string                                      `json:"described_by"`
 	ResourceType    string                                      `json:"resource_type"`
@@ -2132,7 +2132,7 @@ func ListDigitalOceanDroplet(ctx context.Context, d *plugin.QueryData, _ *plugin
 		plugin.Logger(ctx).Error("ListDigitalOceanDroplet NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanDroplet GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -2148,7 +2148,7 @@ func ListDigitalOceanDroplet(ctx context.Context, d *plugin.QueryData, _ *plugin
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanDropletPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanDropletFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanDropletPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanDropletFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanDroplet NewDigitalOceanDropletPaginator", "error", err)
 		return nil, err
@@ -2214,7 +2214,7 @@ func GetDigitalOceanDroplet(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -2228,7 +2228,7 @@ func GetDigitalOceanDroplet(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanDropletPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanDropletFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanDropletPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanDropletFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -2259,7 +2259,7 @@ func GetDigitalOceanDroplet(ctx context.Context, d *plugin.QueryData, _ *plugin.
 type DigitalOceanFirewall struct {
 	ResourceID      string                                       `json:"resource_id"`
 	PlatformID      string                                       `json:"platform_id"`
-	Description     digitalocean.DigitalOceanFirewallDescription `json:"description"`
+	Description     digitalocean.DigitalOceanFirewallDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                        `json:"metadata"`
 	DescribedBy     string                                       `json:"described_by"`
 	ResourceType    string                                       `json:"resource_type"`
@@ -2364,7 +2364,7 @@ func ListDigitalOceanFirewall(ctx context.Context, d *plugin.QueryData, _ *plugi
 		plugin.Logger(ctx).Error("ListDigitalOceanFirewall NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanFirewall GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -2380,7 +2380,7 @@ func ListDigitalOceanFirewall(ctx context.Context, d *plugin.QueryData, _ *plugi
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanFirewallPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanFirewallFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanFirewallPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanFirewallFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanFirewall NewDigitalOceanFirewallPaginator", "error", err)
 		return nil, err
@@ -2433,7 +2433,7 @@ func GetDigitalOceanFirewall(ctx context.Context, d *plugin.QueryData, _ *plugin
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -2447,7 +2447,7 @@ func GetDigitalOceanFirewall(ctx context.Context, d *plugin.QueryData, _ *plugin
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanFirewallPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanFirewallFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanFirewallPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanFirewallFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -2478,7 +2478,7 @@ func GetDigitalOceanFirewall(ctx context.Context, d *plugin.QueryData, _ *plugin
 type DigitalOceanFloatingIP struct {
 	ResourceID      string                                         `json:"resource_id"`
 	PlatformID      string                                         `json:"platform_id"`
-	Description     digitalocean.DigitalOceanFloatingIPDescription `json:"description"`
+	Description     digitalocean.DigitalOceanFloatingIPDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                          `json:"metadata"`
 	DescribedBy     string                                         `json:"described_by"`
 	ResourceType    string                                         `json:"resource_type"`
@@ -2581,7 +2581,7 @@ func ListDigitalOceanFloatingIP(ctx context.Context, d *plugin.QueryData, _ *plu
 		plugin.Logger(ctx).Error("ListDigitalOceanFloatingIP NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanFloatingIP GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -2597,7 +2597,7 @@ func ListDigitalOceanFloatingIP(ctx context.Context, d *plugin.QueryData, _ *plu
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanFloatingIPPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanFloatingIPFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanFloatingIPPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanFloatingIPFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanFloatingIP NewDigitalOceanFloatingIPPaginator", "error", err)
 		return nil, err
@@ -2648,7 +2648,7 @@ func GetDigitalOceanFloatingIP(ctx context.Context, d *plugin.QueryData, _ *plug
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -2662,7 +2662,7 @@ func GetDigitalOceanFloatingIP(ctx context.Context, d *plugin.QueryData, _ *plug
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanFloatingIPPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanFloatingIPFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanFloatingIPPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanFloatingIPFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -2693,7 +2693,7 @@ func GetDigitalOceanFloatingIP(ctx context.Context, d *plugin.QueryData, _ *plug
 type DigitalOceanImage struct {
 	ResourceID      string                                    `json:"resource_id"`
 	PlatformID      string                                    `json:"platform_id"`
-	Description     digitalocean.DigitalOceanImageDescription `json:"description"`
+	Description     digitalocean.DigitalOceanImageDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                     `json:"metadata"`
 	DescribedBy     string                                    `json:"described_by"`
 	ResourceType    string                                    `json:"resource_type"`
@@ -2804,7 +2804,7 @@ func ListDigitalOceanImage(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 		plugin.Logger(ctx).Error("ListDigitalOceanImage NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanImage GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -2820,7 +2820,7 @@ func ListDigitalOceanImage(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanImagePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanImageFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanImagePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanImageFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanImage NewDigitalOceanImagePaginator", "error", err)
 		return nil, err
@@ -2879,7 +2879,7 @@ func GetDigitalOceanImage(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -2893,7 +2893,7 @@ func GetDigitalOceanImage(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanImagePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanImageFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanImagePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanImageFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -2924,7 +2924,7 @@ func GetDigitalOceanImage(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 type DigitalOceanKey struct {
 	ResourceID      string                                  `json:"resource_id"`
 	PlatformID      string                                  `json:"platform_id"`
-	Description     digitalocean.DigitalOceanKeyDescription `json:"description"`
+	Description     digitalocean.DigitalOceanKeyDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                   `json:"metadata"`
 	DescribedBy     string                                  `json:"described_by"`
 	ResourceType    string                                  `json:"resource_type"`
@@ -3025,7 +3025,7 @@ func ListDigitalOceanKey(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		plugin.Logger(ctx).Error("ListDigitalOceanKey NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanKey GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -3041,7 +3041,7 @@ func ListDigitalOceanKey(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanKeyPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanKeyFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanKeyPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanKeyFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanKey NewDigitalOceanKeyPaginator", "error", err)
 		return nil, err
@@ -3090,7 +3090,7 @@ func GetDigitalOceanKey(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -3104,7 +3104,7 @@ func GetDigitalOceanKey(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanKeyPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanKeyFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanKeyPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanKeyFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -3135,7 +3135,7 @@ func GetDigitalOceanKey(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 type DigitalOceanKubernetesCluster struct {
 	ResourceID      string                                                `json:"resource_id"`
 	PlatformID      string                                                `json:"platform_id"`
-	Description     digitalocean.DigitalOceanKubernetesClusterDescription `json:"description"`
+	Description     digitalocean.DigitalOceanKubernetesClusterDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                                 `json:"metadata"`
 	DescribedBy     string                                                `json:"described_by"`
 	ResourceType    string                                                `json:"resource_type"`
@@ -3249,7 +3249,7 @@ func ListDigitalOceanKubernetesCluster(ctx context.Context, d *plugin.QueryData,
 		plugin.Logger(ctx).Error("ListDigitalOceanKubernetesCluster NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanKubernetesCluster GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -3265,7 +3265,7 @@ func ListDigitalOceanKubernetesCluster(ctx context.Context, d *plugin.QueryData,
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanKubernetesClusterPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanKubernetesClusterFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanKubernetesClusterPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanKubernetesClusterFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanKubernetesCluster NewDigitalOceanKubernetesClusterPaginator", "error", err)
 		return nil, err
@@ -3327,7 +3327,7 @@ func GetDigitalOceanKubernetesCluster(ctx context.Context, d *plugin.QueryData, 
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -3341,7 +3341,7 @@ func GetDigitalOceanKubernetesCluster(ctx context.Context, d *plugin.QueryData, 
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanKubernetesClusterPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanKubernetesClusterFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanKubernetesClusterPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanKubernetesClusterFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -3372,7 +3372,7 @@ func GetDigitalOceanKubernetesCluster(ctx context.Context, d *plugin.QueryData, 
 type DigitalOceanKubernetesNodePool struct {
 	ResourceID      string                                                 `json:"resource_id"`
 	PlatformID      string                                                 `json:"platform_id"`
-	Description     digitalocean.DigitalOceanKubernetesNodePoolDescription `json:"description"`
+	Description     digitalocean.DigitalOceanKubernetesNodePoolDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                                  `json:"metadata"`
 	DescribedBy     string                                                 `json:"described_by"`
 	ResourceType    string                                                 `json:"resource_type"`
@@ -3480,7 +3480,7 @@ func ListDigitalOceanKubernetesNodePool(ctx context.Context, d *plugin.QueryData
 		plugin.Logger(ctx).Error("ListDigitalOceanKubernetesNodePool NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanKubernetesNodePool GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -3496,7 +3496,7 @@ func ListDigitalOceanKubernetesNodePool(ctx context.Context, d *plugin.QueryData
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanKubernetesNodePoolPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanKubernetesNodePoolFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanKubernetesNodePoolPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanKubernetesNodePoolFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanKubernetesNodePool NewDigitalOceanKubernetesNodePoolPaginator", "error", err)
 		return nil, err
@@ -3552,7 +3552,7 @@ func GetDigitalOceanKubernetesNodePool(ctx context.Context, d *plugin.QueryData,
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -3566,7 +3566,7 @@ func GetDigitalOceanKubernetesNodePool(ctx context.Context, d *plugin.QueryData,
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanKubernetesNodePoolPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanKubernetesNodePoolFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanKubernetesNodePoolPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanKubernetesNodePoolFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -3597,7 +3597,7 @@ func GetDigitalOceanKubernetesNodePool(ctx context.Context, d *plugin.QueryData,
 type DigitalOceanLoadBalancer struct {
 	ResourceID      string                                           `json:"resource_id"`
 	PlatformID      string                                           `json:"platform_id"`
-	Description     digitalocean.DigitalOceanLoadBalancerDescription `json:"description"`
+	Description     digitalocean.DigitalOceanLoadBalancerDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                            `json:"metadata"`
 	DescribedBy     string                                           `json:"described_by"`
 	ResourceType    string                                           `json:"resource_type"`
@@ -3720,7 +3720,7 @@ func ListDigitalOceanLoadBalancer(ctx context.Context, d *plugin.QueryData, _ *p
 		plugin.Logger(ctx).Error("ListDigitalOceanLoadBalancer NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanLoadBalancer GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -3736,7 +3736,7 @@ func ListDigitalOceanLoadBalancer(ctx context.Context, d *plugin.QueryData, _ *p
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanLoadBalancerPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanLoadBalancerFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanLoadBalancerPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanLoadBalancerFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanLoadBalancer NewDigitalOceanLoadBalancerPaginator", "error", err)
 		return nil, err
@@ -3807,7 +3807,7 @@ func GetDigitalOceanLoadBalancer(ctx context.Context, d *plugin.QueryData, _ *pl
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -3821,7 +3821,7 @@ func GetDigitalOceanLoadBalancer(ctx context.Context, d *plugin.QueryData, _ *pl
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanLoadBalancerPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanLoadBalancerFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanLoadBalancerPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanLoadBalancerFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -3852,7 +3852,7 @@ func GetDigitalOceanLoadBalancer(ctx context.Context, d *plugin.QueryData, _ *pl
 type DigitalOceanProject struct {
 	ResourceID      string                                      `json:"resource_id"`
 	PlatformID      string                                      `json:"platform_id"`
-	Description     digitalocean.DigitalOceanProjectDescription `json:"description"`
+	Description     digitalocean.DigitalOceanProjectDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                       `json:"metadata"`
 	DescribedBy     string                                      `json:"described_by"`
 	ResourceType    string                                      `json:"resource_type"`
@@ -3959,7 +3959,7 @@ func ListDigitalOceanProject(ctx context.Context, d *plugin.QueryData, _ *plugin
 		plugin.Logger(ctx).Error("ListDigitalOceanProject NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanProject GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -3975,7 +3975,7 @@ func ListDigitalOceanProject(ctx context.Context, d *plugin.QueryData, _ *plugin
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanProjectPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanProjectFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanProjectPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanProjectFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanProject NewDigitalOceanProjectPaginator", "error", err)
 		return nil, err
@@ -4030,7 +4030,7 @@ func GetDigitalOceanProject(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -4044,7 +4044,7 @@ func GetDigitalOceanProject(ctx context.Context, d *plugin.QueryData, _ *plugin.
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanProjectPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanProjectFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanProjectPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanProjectFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -4075,7 +4075,7 @@ func GetDigitalOceanProject(ctx context.Context, d *plugin.QueryData, _ *plugin.
 type DigitalOceanRegion struct {
 	ResourceID      string                                     `json:"resource_id"`
 	PlatformID      string                                     `json:"platform_id"`
-	Description     digitalocean.DigitalOceanRegionDescription `json:"description"`
+	Description     digitalocean.DigitalOceanRegionDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                      `json:"metadata"`
 	DescribedBy     string                                     `json:"described_by"`
 	ResourceType    string                                     `json:"resource_type"`
@@ -4177,7 +4177,7 @@ func ListDigitalOceanRegion(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		plugin.Logger(ctx).Error("ListDigitalOceanRegion NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanRegion GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -4193,7 +4193,7 @@ func ListDigitalOceanRegion(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanRegionPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanRegionFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanRegionPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanRegionFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanRegion NewDigitalOceanRegionPaginator", "error", err)
 		return nil, err
@@ -4243,7 +4243,7 @@ func GetDigitalOceanRegion(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -4257,7 +4257,7 @@ func GetDigitalOceanRegion(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanRegionPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanRegionFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanRegionPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanRegionFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -4288,7 +4288,7 @@ func GetDigitalOceanRegion(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 type DigitalOceanSize struct {
 	ResourceID      string                                   `json:"resource_id"`
 	PlatformID      string                                   `json:"platform_id"`
-	Description     digitalocean.DigitalOceanSizeDescription `json:"description"`
+	Description     digitalocean.DigitalOceanSizeDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                    `json:"metadata"`
 	DescribedBy     string                                   `json:"described_by"`
 	ResourceType    string                                   `json:"resource_type"`
@@ -4394,7 +4394,7 @@ func ListDigitalOceanSize(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 		plugin.Logger(ctx).Error("ListDigitalOceanSize NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanSize GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -4410,7 +4410,7 @@ func ListDigitalOceanSize(ctx context.Context, d *plugin.QueryData, _ *plugin.Hy
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanSizePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanSizeFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanSizePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanSizeFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanSize NewDigitalOceanSizePaginator", "error", err)
 		return nil, err
@@ -4464,7 +4464,7 @@ func GetDigitalOceanSize(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -4478,7 +4478,7 @@ func GetDigitalOceanSize(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanSizePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanSizeFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanSizePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanSizeFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -4509,7 +4509,7 @@ func GetDigitalOceanSize(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 type DigitalOceanSnapshot struct {
 	ResourceID      string                                       `json:"resource_id"`
 	PlatformID      string                                       `json:"platform_id"`
-	Description     digitalocean.DigitalOceanSnapshotDescription `json:"description"`
+	Description     digitalocean.DigitalOceanSnapshotDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                        `json:"metadata"`
 	DescribedBy     string                                       `json:"described_by"`
 	ResourceType    string                                       `json:"resource_type"`
@@ -4615,7 +4615,7 @@ func ListDigitalOceanSnapshot(ctx context.Context, d *plugin.QueryData, _ *plugi
 		plugin.Logger(ctx).Error("ListDigitalOceanSnapshot NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanSnapshot GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -4631,7 +4631,7 @@ func ListDigitalOceanSnapshot(ctx context.Context, d *plugin.QueryData, _ *plugi
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanSnapshotPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanSnapshotFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanSnapshotPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanSnapshotFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanSnapshot NewDigitalOceanSnapshotPaginator", "error", err)
 		return nil, err
@@ -4685,7 +4685,7 @@ func GetDigitalOceanSnapshot(ctx context.Context, d *plugin.QueryData, _ *plugin
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -4699,7 +4699,7 @@ func GetDigitalOceanSnapshot(ctx context.Context, d *plugin.QueryData, _ *plugin
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanSnapshotPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanSnapshotFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanSnapshotPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanSnapshotFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -4730,7 +4730,7 @@ func GetDigitalOceanSnapshot(ctx context.Context, d *plugin.QueryData, _ *plugin
 type DigitalOceanTag struct {
 	ResourceID      string                                  `json:"resource_id"`
 	PlatformID      string                                  `json:"platform_id"`
-	Description     digitalocean.DigitalOceanTagDescription `json:"description"`
+	Description     digitalocean.DigitalOceanTagDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                   `json:"metadata"`
 	DescribedBy     string                                  `json:"described_by"`
 	ResourceType    string                                  `json:"resource_type"`
@@ -4829,7 +4829,7 @@ func ListDigitalOceanTag(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		plugin.Logger(ctx).Error("ListDigitalOceanTag NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanTag GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -4845,7 +4845,7 @@ func ListDigitalOceanTag(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanTagPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanTagFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanTagPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanTagFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanTag NewDigitalOceanTagPaginator", "error", err)
 		return nil, err
@@ -4892,7 +4892,7 @@ func GetDigitalOceanTag(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -4906,7 +4906,7 @@ func GetDigitalOceanTag(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanTagPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanTagFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanTagPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanTagFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -4937,7 +4937,7 @@ func GetDigitalOceanTag(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 type DigitalOceanVolume struct {
 	ResourceID      string                                     `json:"resource_id"`
 	PlatformID      string                                     `json:"platform_id"`
-	Description     digitalocean.DigitalOceanVolumeDescription `json:"description"`
+	Description     digitalocean.DigitalOceanVolumeDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                      `json:"metadata"`
 	DescribedBy     string                                     `json:"described_by"`
 	ResourceType    string                                     `json:"resource_type"`
@@ -5046,7 +5046,7 @@ func ListDigitalOceanVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		plugin.Logger(ctx).Error("ListDigitalOceanVolume NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanVolume GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -5062,7 +5062,7 @@ func ListDigitalOceanVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanVolumePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanVolumeFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanVolumePaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanVolumeFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanVolume NewDigitalOceanVolumePaginator", "error", err)
 		return nil, err
@@ -5119,7 +5119,7 @@ func GetDigitalOceanVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -5133,7 +5133,7 @@ func GetDigitalOceanVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanVolumePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanVolumeFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanVolumePaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanVolumeFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
@@ -5164,7 +5164,7 @@ func GetDigitalOceanVolume(ctx context.Context, d *plugin.QueryData, _ *plugin.H
 type DigitalOceanVPC struct {
 	ResourceID      string                                  `json:"resource_id"`
 	PlatformID      string                                  `json:"platform_id"`
-	Description     digitalocean.DigitalOceanVPCDescription `json:"description"`
+	Description     digitalocean.DigitalOceanVPCDescription `json:"Description"`
 	Metadata        digitalocean.Metadata                   `json:"metadata"`
 	DescribedBy     string                                  `json:"described_by"`
 	ResourceType    string                                  `json:"resource_type"`
@@ -5269,7 +5269,7 @@ func ListDigitalOceanVPC(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		plugin.Logger(ctx).Error("ListDigitalOceanVPC NewSelfClientCached", "error", err)
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanVPC GetConfigTableValueOrNil for OpenGovernanceConfigKeyIntegrationID", "error", err)
 		return nil, err
@@ -5285,7 +5285,7 @@ func ListDigitalOceanVPC(ctx context.Context, d *plugin.QueryData, _ *plugin.Hyd
 		return nil, err
 	}
 
-	paginator, err := k.NewDigitalOceanVPCPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanVPCFilters, integrationID, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
+	paginator, err := k.NewDigitalOceanVPCPaginator(essdk.BuildFilter(ctx, d.QueryContext, listDigitalOceanVPCFilters, integrationId, encodedResourceCollectionFilters, clientType), d.QueryContext.Limit)
 	if err != nil {
 		plugin.Logger(ctx).Error("ListDigitalOceanVPC NewDigitalOceanVPCPaginator", "error", err)
 		return nil, err
@@ -5338,7 +5338,7 @@ func GetDigitalOceanVPC(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	if err != nil {
 		return nil, err
 	}
-	integrationID, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
+	integrationId, err := sc.GetConfigTableValueOrNil(ctx, steampipesdk.OpenGovernanceConfigKeyIntegrationID)
 	if err != nil {
 		return nil, err
 	}
@@ -5352,7 +5352,7 @@ func GetDigitalOceanVPC(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 	}
 
 	limit := int64(1)
-	paginator, err := k.NewDigitalOceanVPCPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanVPCFilters, integrationID, encodedResourceCollectionFilters, clientType), &limit)
+	paginator, err := k.NewDigitalOceanVPCPaginator(essdk.BuildFilter(ctx, d.QueryContext, getDigitalOceanVPCFilters, integrationId, encodedResourceCollectionFilters, clientType), &limit)
 	if err != nil {
 		return nil, err
 	}
