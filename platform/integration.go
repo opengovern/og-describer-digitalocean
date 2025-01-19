@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/opengovern/og-describer-openai/platform/constants"
+	"github.com/opengovern/og-describer-digitalocean/platform/constants"
 "crypto/sha256"
-	"github.com/opengovern/og-describer-openai/global"
-	"github.com/opengovern/og-describer-openai/global/maps"
+	"github.com/opengovern/og-describer-digitalocean/global"
+	"github.com/opengovern/og-describer-digitalocean/global/maps"
 	"github.com/opengovern/og-util/pkg/integration"
 	"github.com/opengovern/og-util/pkg/integration/interfaces"
 	"encoding/hex"

@@ -2,8 +2,8 @@ package global
 
 import (
 	"context"
-	"github.com/opengovern/og-describer-openai/cloudql/openai"
-	"github.com/opengovern/og-describer-openai/global/maps"
+	"github.com/opengovern/og-describer-digitalocean/cloudql/openai"
+	"github.com/opengovern/og-describer-digitalocean/global/maps"
 
 	"strings"
 

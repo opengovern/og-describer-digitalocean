@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/opengovern/og-describer-openai/discovery/pkg"
+	"github.com/opengovern/og-describer-digitalocean/discovery/pkg"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"
 	"os"

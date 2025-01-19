@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	model "github.com/opengovern/og-describer-openai/discovery/pkg/models"
+	model "github.com/opengovern/og-describer-digitalocean/discovery/pkg/models"
 	"github.com/opengovern/og-util/pkg/describe/enums"
 	"golang.org/x/net/context"
 	"golang.org/x/time/rate"

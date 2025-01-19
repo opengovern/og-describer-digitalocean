@@ -2,7 +2,7 @@ package maps
 import (
 
 	"github.com/opengovern/og-util/pkg/integration/interfaces"
-	model "github.com/opengovern/og-describer-openai/discovery/pkg/models"
+	model "github.com/opengovern/og-describer-digitalocean/discovery/pkg/models"
 )
 var ResourceTypes = map[string]model.ResourceType{}
 
