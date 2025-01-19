@@ -45,14 +45,14 @@ jobs:
       - name: Configure Git for Private Repos
         run: |
           git config --global url.https://$GH_ACCESS_TOKEN@github.com/opengovern.insteadOf https://github.com/opengovern
-      - name: Build openai Plugin App
+      - name: Build digitalocean Plugin App
         working-directory: ./cloudql
         run: make build
-      - name: Pack openai Plugin Build
+      - name: Pack digitalocean Plugin Build
         working-directory: ./cloudql
         run: |
           tar -cvf build.tar build
-      - name: Upload openai Plugin Artifact
+      - name: Upload digitalocean Plugin Artifact
         uses: actions/upload-artifact@v4.6.0
         with:
           name: steampipe-plugin-digitalocean
@@ -98,7 +98,7 @@ jobs:
         working-directory: .
         run: |
           tar -czf digitalocean-plugin.tar digitalocean-plugin
-      - name: Upload openai outputs artifact
+      - name: Upload digitalocean outputs artifact
         uses: actions/upload-artifact@v4.6.0
         with:
           name: digitalocean-plugins
@@ -123,12 +123,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Download openai Plugin Artifact
+      - name: Download digitalocean Plugin Artifact
         uses: actions/download-artifact@v4
         with:
           name: steampipe-plugin-digitalocean
           path: .
-      - name: Unpack openai Plugin Artifact
+      - name: Unpack digitalocean Plugin Artifact
         run: |
           tar -xvf build.tar
       - name: Log in to Container Registry
@@ -137,7 +137,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PAT }}
-      - name: Build and Push Docker Image for openai Plugin
+      - name: Build and Push Docker Image for digitalocean Plugin
         uses: docker/build-push-action@v4
         with:
           push: true

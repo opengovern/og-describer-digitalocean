@@ -6,12 +6,11 @@ import (
 	"fmt"
 	"github.com/digitalocean/godo"
 	"github.com/opengovern/og-describer-digitalocean/discovery/pkg/models"
-	configs "github.com/opengovern/og-describer-digitalocean/global"
 	model "github.com/opengovern/og-describer-digitalocean/discovery/provider"
 	"strings"
 )
 
-func DigitalOceanAccount(ctx context.Context, creds *configs.IntegrationCredentials, triggerType string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanAccount(ctx context.Context, creds *models.IntegrationCredentials, triggerType string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	account, _, err := client.Account.Get(ctx)
 	if err != nil {
@@ -37,7 +36,7 @@ func DigitalOceanAccount(ctx context.Context, creds *configs.IntegrationCredenti
 	return []models.Resource{resource}, nil
 }
 
-func getAccountUUID(ctx context.Context, creds *configs.IntegrationCredentials) (string, error) {
+func getAccountUUID(ctx context.Context, creds *models.IntegrationCredentials) (string, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	account, _, err := client.Account.Get(ctx)
 	if err != nil {
@@ -49,7 +48,7 @@ func getAccountUUID(ctx context.Context, creds *configs.IntegrationCredentials) 
 	return account.UUID, nil
 }
 
-func DigitalOceanAction(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanAction(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -96,7 +95,7 @@ func DigitalOceanAction(ctx context.Context, creds *configs.IntegrationCredentia
 	return resources, nil
 }
 
-func DigitalOceanAlertPolicy(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanAlertPolicy(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -143,7 +142,7 @@ func DigitalOceanAlertPolicy(ctx context.Context, creds *configs.IntegrationCred
 	return resources, nil
 }
 
-func DigitalOceanApp(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanApp(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -190,7 +189,7 @@ func DigitalOceanApp(ctx context.Context, creds *configs.IntegrationCredentials,
 	return resources, nil
 }
 
-func DigitalOceanBalance(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanBalance(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -222,7 +221,7 @@ func DigitalOceanBalance(ctx context.Context, creds *configs.IntegrationCredenti
 	return []models.Resource{resource}, nil
 }
 
-func DigitalOceanBill(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanBill(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -275,7 +274,7 @@ func DigitalOceanBill(ctx context.Context, creds *configs.IntegrationCredentials
 	return resources, nil
 }
 
-func DigitalOceanContainerRegistry(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanContainerRegistry(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -307,7 +306,7 @@ func DigitalOceanContainerRegistry(ctx context.Context, creds *configs.Integrati
 	return []models.Resource{resource}, nil
 }
 
-func DigitalOceanDatabase(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanDatabase(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -413,7 +412,7 @@ func DigitalOceanDatabase(ctx context.Context, creds *configs.IntegrationCredent
 	return resources, nil
 }
 
-func DigitalOceanDomain(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanDomain(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -460,7 +459,7 @@ func DigitalOceanDomain(ctx context.Context, creds *configs.IntegrationCredentia
 	return resources, nil
 }
 
-func DigitalOceanDroplet(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanDroplet(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -508,7 +507,7 @@ func DigitalOceanDroplet(ctx context.Context, creds *configs.IntegrationCredenti
 	return resources, nil
 }
 
-func DigitalOceanFirewall(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanFirewall(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -555,7 +554,7 @@ func DigitalOceanFirewall(ctx context.Context, creds *configs.IntegrationCredent
 	return resources, nil
 }
 
-func DigitalOceanFloatingIP(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanFloatingIP(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -603,7 +602,7 @@ func DigitalOceanFloatingIP(ctx context.Context, creds *configs.IntegrationCrede
 	return resources, nil
 }
 
-func DigitalOceanImage(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanImage(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -650,7 +649,7 @@ func DigitalOceanImage(ctx context.Context, creds *configs.IntegrationCredential
 	return resources, nil
 }
 
-func DigitalOceanKey(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanKey(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -697,7 +696,7 @@ func DigitalOceanKey(ctx context.Context, creds *configs.IntegrationCredentials,
 	return resources, nil
 }
 
-func DigitalOceanKubernetesCluster(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanKubernetesCluster(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -744,7 +743,7 @@ func DigitalOceanKubernetesCluster(ctx context.Context, creds *configs.Integrati
 	return resources, nil
 }
 
-func DigitalOceanKubernetesNodePool(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanKubernetesNodePool(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -814,7 +813,7 @@ func DigitalOceanKubernetesNodePool(ctx context.Context, creds *configs.Integrat
 	return resources, nil
 }
 
-func DigitalOceanLoadBalancer(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanLoadBalancer(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -861,7 +860,7 @@ func DigitalOceanLoadBalancer(ctx context.Context, creds *configs.IntegrationCre
 	return resources, nil
 }
 
-func DigitalOceanProject(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanProject(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -908,7 +907,7 @@ func DigitalOceanProject(ctx context.Context, creds *configs.IntegrationCredenti
 	return resources, nil
 }
 
-func DigitalOceanRegion(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanRegion(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -955,7 +954,7 @@ func DigitalOceanRegion(ctx context.Context, creds *configs.IntegrationCredentia
 	return resources, nil
 }
 
-func DigitalOceanSize(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanSize(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -1002,7 +1001,7 @@ func DigitalOceanSize(ctx context.Context, creds *configs.IntegrationCredentials
 	return resources, nil
 }
 
-func DigitalOceanSnapshot(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanSnapshot(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -1049,7 +1048,7 @@ func DigitalOceanSnapshot(ctx context.Context, creds *configs.IntegrationCredent
 	return resources, nil
 }
 
-func DigitalOceanTag(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanTag(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 	accountUUID, err := getAccountUUID(ctx, creds)
 	if err != nil {
@@ -1096,7 +1095,7 @@ func DigitalOceanTag(ctx context.Context, creds *configs.IntegrationCredentials,
 	return resources, nil
 }
 
-func DigitalOceanVolume(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanVolume(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 
 	accountUUID, err := getAccountUUID(ctx, creds)
@@ -1147,7 +1146,7 @@ func DigitalOceanVolume(ctx context.Context, creds *configs.IntegrationCredentia
 	return resources, nil
 }
 
-func DigitalOceanVPC(ctx context.Context, creds *configs.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
+func DigitalOceanVPC(ctx context.Context, creds *models.IntegrationCredentials, _ string, stream *models.StreamSender) ([]models.Resource, error) {
 	client := godo.NewFromToken(creds.AuthToken)
 
 	accountUUID, err := getAccountUUID(ctx, creds)
