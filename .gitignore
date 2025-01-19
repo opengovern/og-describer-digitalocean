@@ -1,4 +1,5 @@
 build/
-og-describer-template
+og-describer-*
 .idea
-local/
+.env
+.vscode
