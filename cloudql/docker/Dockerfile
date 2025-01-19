@@ -1,3 +1,3 @@
 FROM alpine:latest
 
-COPY ../build/steampipe-plugin-openai.plugin /steampipe-plugin-openai.plugin
+COPY ../build/steampipe-plugin-digitalocean.plugin /steampipe-plugin-digitalocean.plugin

@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/digitalocean/godo"
-	"github.com/opengovern/og-describer-digitalocean/pkg/sdk/models"
-	"github.com/opengovern/og-describer-digitalocean/provider/configs"
-	"github.com/opengovern/og-describer-digitalocean/provider/model"
+	"github.com/opengovern/og-describer-digitalocean/discovery/pkg/models"
+	configs "github.com/opengovern/og-describer-digitalocean/global"
+	model "github.com/opengovern/og-describer-digitalocean/discovery/provider"
 	"strings"
 )
 

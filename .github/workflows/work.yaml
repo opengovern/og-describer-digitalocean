@@ -55,7 +55,7 @@ jobs:
       - name: Upload openai Plugin Artifact
         uses: actions/upload-artifact@v4.6.0
         with:
-          name: steampipe-plugin-openai
+          name: steampipe-plugin-digitalocean
           path: ./cloudql/build.tar
           retention-days: 1
       - name: Build Local Describer App
@@ -84,25 +84,25 @@ jobs:
         run: make build
       - name: Create output directory
         working-directory: .
-        run: mkdir -p openai-plugin
+        run: mkdir -p digitalocean-plugin
       - name: Copy steampipe plugin to output directory
         working-directory: .
-        run: cp ./cloudql/build/steampipe-plugin-openai.plugin ./openai-plugin/cloudql-plugin
+        run: cp ./cloudql/build/steampipe-plugin-digitalocean.plugin ./digitalocean-plugin/cloudql-plugin
       - name: Copy integration plugin to output directory
         working-directory: .
-        run: cp ./platform/build/integration-plugin ./openai-plugin/
+        run: cp ./platform/build/integration-plugin ./digitalocean-plugin/
       - name: Copy manifest to output directory
         working-directory: .
-        run: cp ./platform/constants/manifest.yaml ./openai-plugin/
+        run: cp ./platform/constants/manifest.yaml ./digitalocean-plugin/
       - name: Pack output
         working-directory: .
         run: |
-          tar -czf openai-plugin.tar openai-plugin
+          tar -czf digitalocean-plugin.tar digitalocean-plugin
       - name: Upload openai outputs artifact
         uses: actions/upload-artifact@v4.6.0
         with:
-          name: openai-plugins
-          path: ./openai-plugin.tar
+          name: digitalocean-plugins
+          path: ./digitalocean-plugin.tar
           retention-days: 1
 
       - name: Set Latest Tag Output
@@ -113,7 +113,7 @@ jobs:
           else
             echo "latest_tag=${{ steps.tag_version.outputs.new_tag }}" >> "$GITHUB_OUTPUT"
           fi
-  deploy-openai-plugin:
+  deploy-digitalocean-plugin:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -126,7 +126,7 @@ jobs:
       - name: Download openai Plugin Artifact
         uses: actions/download-artifact@v4
         with:
-          name: steampipe-plugin-openai
+          name: steampipe-plugin-digitalocean
           path: .
       - name: Unpack openai Plugin Artifact
         run: |
@@ -142,8 +142,8 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/steampipe-plugin-openai:0.0.1
-            ghcr.io/${{ github.repository_owner }}/steampipe-plugin-openai:${{ needs.build.outputs.latest_tag }}
+            ghcr.io/${{ github.repository_owner }}/steampipe-plugin-digitalocean:0.0.1
+            ghcr.io/${{ github.repository_owner }}/steampipe-plugin-digitalocean:${{ needs.build.outputs.latest_tag }}
           file: cloudql/docker/Dockerfile
           context: .
   deploy-local-describer:
@@ -194,16 +194,16 @@ jobs:
       - name: Download Integration Plugin Artifact
         uses: actions/download-artifact@v4
         with:
-          name: openai-plugins
+          name: digitalocean-plugins
       - name: Unpack Integration Plugin Artifact
         run: |
-          tar -xvf openai-plugin.tar
+          tar -xvf digitalocean-plugin.tar
       - name: Pack folder content into a zip file for release
         run: |
-          cd openai-plugin
-          zip -r openai-plugin.zip .
+          cd digitalocean-plugin
+          zip -r digitalocean-plugin.zip .
       - name: Release Integration Plugin
         uses: softprops/action-gh-release@v2
         with:
-          files: ./openai-plugin/openai-plugin.zip
+          files: ./digitalocean-plugin/digitalocean-plugin.zip
           tag_name: ${{ needs.build.outputs.latest_tag }}

@@ -2,7 +2,7 @@ package global
 
 import (
 	"context"
-	"github.com/opengovern/og-describer-digitalocean/cloudql/openai"
+	"github.com/opengovern/og-describer-digitalocean/cloudql/digitalocean"
 	"github.com/opengovern/og-describer-digitalocean/global/maps"
 
 	"strings"
@@ -36,7 +36,7 @@ func ExtractTableName(resourceType string) string {
 }
 
 func Plugin() *plugin.Plugin {
-	return openai.Plugin(buildContext())
+	return digitalocean.Plugin(buildContext())
 }
 
 func ExtractTagsAndNames(logger *zap.Logger, plg *plugin.Plugin, resourceType string, source interface{}) (map[string]string, string, error) {
