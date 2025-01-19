@@ -1,0 +1,65 @@
+[
+  {
+    "ResourceName": "OpenAI/Project",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListProjects)",
+    "GetDescriber": "DescribeSingleByOpenAI(describers.GetProject)",
+    "SteampipeTable": "openai_project",
+    "Model": "Project"
+  },
+  {
+    "ResourceName": "OpenAI/Project/ApiKey",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectAPIKeys)",
+    "GetDescriber": "",
+    "SteampipeTable": "openai_project_api_key",
+    "Model": "ProjectApiKey"
+  },
+  {
+    "ResourceName": "OpenAI/Project/RateLimit",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectRateLimits)",
+    "GetDescriber": "",
+    "SteampipeTable": "openai_project_rate_limit",
+    "Model": "ProjectRateLimit"
+  },
+  {
+    "ResourceName": "OpenAI/Project/ServiceAccount",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectServiceAccounts)",
+    "GetDescriber": "",
+    "SteampipeTable": "openai_project_service_account",
+    "Model": "ProjectServiceAccount"
+  },
+  {
+    "ResourceName": "OpenAI/Project/User",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectUsers)",
+    "GetDescriber": "",
+    "SteampipeTable": "openai_project_user",
+    "Model": "ProjectUser"
+  },
+  {
+    "ResourceName": "OpenAI/Model",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListModels)",
+    "GetDescriber": "DescribeSingleByOpenAI(describers.GetModel)",
+    "SteampipeTable": "openai_model",
+    "Model": "Models"
+  },
+  {
+    "ResourceName": "OpenAI/File",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListFiles)",
+    "GetDescriber": "",
+    "SteampipeTable": "openai_file",
+    "Model": "File"
+  },
+  {
+    "ResourceName": "OpenAI/VectorStore",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListVectorStores)",
+    "GetDescriber": "DescribeSingleByOpenAI(describers.GetVectorStore)",
+    "SteampipeTable": "openai_vector_store",
+    "Model": "VectorStore"
+  },
+  {
+    "ResourceName": "OpenAI/Assistant",
+    "ListDescriber": "DescribeListByOpenAI(describers.ListAssistants)",
+    "GetDescriber": "DescribeSingleByOpenAI(describers.GetAssistant)",
+    "SteampipeTable": "openai_assistant",
+    "Model": "Assistant"
+  }
+]
