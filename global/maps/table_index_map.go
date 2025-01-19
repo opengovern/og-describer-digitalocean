@@ -1,8 +1,6 @@
 package maps
 
-import (
-	"github.com/opengovern/og-describer-openai/discovery/pkg/es"
-)
+
 
 var ResourceTypesToTables = map[string]string{
   "OpenAI/Project": "openai_project",
@@ -17,15 +15,7 @@ var ResourceTypesToTables = map[string]string{
 }
 
 var ResourceTypeToDescription = map[string]interface{}{
-  "OpenAI/Project": opengovernance.Project{},
-  "OpenAI/Project/ApiKey": opengovernance.ProjectApiKey{},
-  "OpenAI/Project/RateLimit": opengovernance.ProjectRateLimit{},
-  "OpenAI/Project/ServiceAccount": opengovernance.ProjectServiceAccount{},
-  "OpenAI/Project/User": opengovernance.ProjectUser{},
-  "OpenAI/Model": opengovernance.Models{},
-  "OpenAI/File": opengovernance.File{},
-  "OpenAI/VectorStore": opengovernance.VectorStore{},
-  "OpenAI/Assistant": opengovernance.Assistant{},
+ 
 }
 
 var TablesToResourceTypes = map[string]string{

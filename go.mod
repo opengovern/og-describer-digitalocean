@@ -1,4 +1,4 @@
-module github.com/opengovern/og-describer-openai
+module github.com/opengovern/og-describer-digitalocean
 
 go 1.23.3
 

@@ -1,65 +1,146 @@
 [
   {
-    "ResourceName": "OpenAI/Project",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListProjects)",
-    "GetDescriber": "DescribeSingleByOpenAI(describers.GetProject)",
-    "SteampipeTable": "openai_project",
-    "Model": "Project"
+    "ResourceName": "DigitalOcean::Account",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanAccount)",
+    "SteampipeTable": "digitalocean_account",
+    "Model": "DigitalOceanAccount"
   },
   {
-    "ResourceName": "OpenAI/Project/ApiKey",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectAPIKeys)",
-    "GetDescriber": "",
-    "SteampipeTable": "openai_project_api_key",
-    "Model": "ProjectApiKey"
+    "ResourceName": "DigitalOcean::Action",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanAction)",
+    "SteampipeTable": "digitalocean_action",
+    "Model": "DigitalOceanAction"
   },
   {
-    "ResourceName": "OpenAI/Project/RateLimit",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectRateLimits)",
-    "GetDescriber": "",
-    "SteampipeTable": "openai_project_rate_limit",
-    "Model": "ProjectRateLimit"
+    "ResourceName": "DigitalOcean::AlertPolicy",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanAlertPolicy)",
+    "SteampipeTable": "digitalocean_alert_policy",
+    "Model": "DigitalOceanAlertPolicy"
   },
   {
-    "ResourceName": "OpenAI/Project/ServiceAccount",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectServiceAccounts)",
-    "GetDescriber": "",
-    "SteampipeTable": "openai_project_service_account",
-    "Model": "ProjectServiceAccount"
+    "ResourceName": "DigitalOcean::App",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanApp)",
+    "SteampipeTable": "digitalocean_app",
+    "Model": "DigitalOceanApp"
   },
   {
-    "ResourceName": "OpenAI/Project/User",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListProjectUsers)",
-    "GetDescriber": "",
-    "SteampipeTable": "openai_project_user",
-    "Model": "ProjectUser"
+    "ResourceName": "DigitalOcean::Balance",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanBalance)",
+    "SteampipeTable": "digitalocean_balance",
+    "Model": "DigitalOceanBalance"
   },
   {
-    "ResourceName": "OpenAI/Model",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListModels)",
-    "GetDescriber": "DescribeSingleByOpenAI(describers.GetModel)",
-    "SteampipeTable": "openai_model",
-    "Model": "Models"
+    "ResourceName": "DigitalOcean::Bill",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanBill)",
+    "SteampipeTable": "digitalocean_bill",
+    "Model": "DigitalOceanBill"
   },
   {
-    "ResourceName": "OpenAI/File",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListFiles)",
-    "GetDescriber": "",
-    "SteampipeTable": "openai_file",
-    "Model": "File"
+    "ResourceName": "DigitalOcean::ContainerRegistry",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanContainerRegistry)",
+    "SteampipeTable": "digitalocean_container_registry",
+    "Model": "DigitalOceanContainerRegistry"
   },
   {
-    "ResourceName": "OpenAI/VectorStore",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListVectorStores)",
-    "GetDescriber": "DescribeSingleByOpenAI(describers.GetVectorStore)",
-    "SteampipeTable": "openai_vector_store",
-    "Model": "VectorStore"
+    "ResourceName": "DigitalOcean::Database",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanDatabase)",
+    "SteampipeTable": "digitalocean_database",
+    "Model": "DigitalOceanDatabase"
   },
   {
-    "ResourceName": "OpenAI/Assistant",
-    "ListDescriber": "DescribeListByOpenAI(describers.ListAssistants)",
-    "GetDescriber": "DescribeSingleByOpenAI(describers.GetAssistant)",
-    "SteampipeTable": "openai_assistant",
-    "Model": "Assistant"
+    "ResourceName": "DigitalOcean::Domain",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanDomain)",
+    "SteampipeTable": "digitalocean_domain",
+    "Model": "DigitalOceanDomain"
+  },
+  {
+    "ResourceName": "DigitalOcean::Droplet",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanDroplet)",
+    "SteampipeTable": "digitalocean_droplet",
+    "Model": "DigitalOceanDroplet"
+  },
+  {
+    "ResourceName": "DigitalOcean::Firewall",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanFirewall)",
+    "SteampipeTable": "digitalocean_firewall",
+    "Model": "DigitalOceanFirewall"
+  },
+  {
+    "ResourceName": "DigitalOcean::FloatingIP",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanFloatingIP)",
+    "SteampipeTable": "digitalocean_floating_ip",
+    "Model": "DigitalOceanFloatingIP"
+  },
+  {
+    "ResourceName": "DigitalOcean::Image",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanImage)",
+    "SteampipeTable": "digitalocean_image",
+    "Model": "DigitalOceanImage"
+  },
+  {
+    "ResourceName": "DigitalOcean::Key",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanKey)",
+    "SteampipeTable": "digitalocean_key",
+    "Model": "DigitalOceanKey"
+  },
+  {
+    "ResourceName": "DigitalOcean::KubernetesCluster",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanKubernetesCluster)",
+    "SteampipeTable": "digitalocean_kubernetes_cluster",
+    "Model": "DigitalOceanKubernetesCluster"
+  },
+  {
+    "ResourceName": "DigitalOcean::KubernetesNodePool",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanKubernetesNodePool)",
+    "SteampipeTable": "digitalocean_kubernetes_node_pool",
+    "Model": "DigitalOceanKubernetesNodePool"
+  },
+  {
+    "ResourceName": "DigitalOcean::LoadBalancer",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanLoadBalancer)",
+    "SteampipeTable": "digitalocean_load_balancer",
+    "Model": "DigitalOceanLoadBalancer"
+  },
+  {
+    "ResourceName": "DigitalOcean::Project",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanProject)",
+    "SteampipeTable": "digitalocean_project",
+    "Model": "DigitalOceanProject"
+  },
+  {
+    "ResourceName": "DigitalOcean::Region",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanRegion)",
+    "SteampipeTable": "digitalocean_region",
+    "Model": "DigitalOceanRegion"
+  },
+  {
+    "ResourceName": "DigitalOcean::Size",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanSize)",
+    "SteampipeTable": "digitalocean_size",
+    "Model": "DigitalOceanSize"
+  },
+  {
+    "ResourceName": "DigitalOcean::Snapshot",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanSnapshot)",
+    "SteampipeTable": "digitalocean_snapshot",
+    "Model": "DigitalOceanSnapshot"
+  },
+  {
+    "ResourceName": "DigitalOcean::Tag",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanTag)",
+    "SteampipeTable": "digitalocean_tag",
+    "Model": "DigitalOceanTag"
+  },
+  {
+    "ResourceName": "DigitalOcean::Volume",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanVolume)",
+    "SteampipeTable": "digitalocean_volume",
+    "Model": "DigitalOceanVolume"
+  },
+  {
+    "ResourceName": "DigitalOcean::VPC",
+    "ListDescriber": "DescribeByIntegration(describers.DigitalOceanVPC)",
+    "SteampipeTable": "digitalocean_vpc",
+    "Model": "DigitalOceanVPC"
   }
 ]

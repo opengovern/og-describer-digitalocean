@@ -1,9 +1,9 @@
 package global
 
 const (
-	StreamName           = "og_describer_openai"
-	JobQueueTopic        = "og_describer_openai_job_queue"
-	ConsumerGroup        = "describer-openai"
-	JobQueueTopicManuals = "og_describer_openai_manuals_job_queue"
-	ConsumerGroupManuals = "describer-openai-manuals"
+	StreamName           = "og_describer_digitalocean_team"
+	JobQueueTopic        = "og_describer_digitalocean_team_job_queue"
+	ConsumerGroup        = "describer-digitalocean-team"
+	JobQueueTopicManuals = "og_describer_digitalocean_team_manuals_job_queue"
+	ConsumerGroupManuals = "describer-digitalocean-team-manuals"
 )

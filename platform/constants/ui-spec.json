@@ -1,67 +1,28 @@
 {
-  "integration_type_id": "openai_project",
-  "integration_name": "OPENAI Project",
-  "help_text_md": "OPEN AI  .",
-  "platform_documentation": "https://openai.com/",
-  "provider_documentation": "https://openai.com/",
-  "icon": "openai.svg",
+  "integration_type_id": "digitalocean_team",
+  "integration_name": "Digital Ocean Team",
+  "help_text_md": "Digital Ocean  .",
+  "platform_documentation": "https://www.digitalocean.com/",
+  "provider_documentation": "https://www.digitalocean.com/",
+  "icon": "digitalocean.svg",
   "discover": {
     "credentials": [
       {
-        "type": "Project ",
-        "label": "Project ",
+        "type": "auth_token",
+        "label": "Auth Token",
         "priority": 1,
         "fields": [
           {
-            "name": "api_key",
-            "label": "API Key",
+            "name": "auth_token",
+            "label": "Auth token",
             "inputType": "text",
             "required": true,
             "order": 1,
             "validation": {
-              "pattern": "^[A-Z0-9]{300}$",
-              "errorMessage": "API Key must be a 300-character alphanumeric string."
+              "pattern": "^[A-Z0-9]{120}$",
+              "errorMessage": "Auth Token must be a 120-character alphanumeric string."
             },
-            "info": "Please provide your OPENAI API Key.",
-            "external_help_url": "https://docs.aws.amazon.com/access-key-id"
-          },
-          {
-            "name": "project_id",
-            "label": "Project ID",
-            "inputType": "text",
-            "required": true,
-            "order": 1,
-            "validation": {
-              "pattern": "^[A-Z0-9]{60}$",
-              "errorMessage": "Project ID must be a 60-character alphanumeric string."
-            },
-            "info": "Please provide your OPENAI API Key.",
-            "external_help_url": "https://docs.aws.amazon.com/access-key-id"
-          },
-          {
-            "name": "project_name",
-            "label": "Project Name",
-            "inputType": "text",
-            "required": true,
-            "order": 1,
-            "validation": {
-              "pattern": "^[A-Z0-9]{10,120}$",
-              "errorMessage": "Project Name must be a 60-character alphanumeric string."
-            },
-            "info": "Please provide your OPENAI API Key.",
-            "external_help_url": "https://docs.aws.amazon.com/access-key-id"
-          },
-          {
-            "name": "organization_id",
-            "label": "Organization ID",
-            "inputType": "text",
-            "required": true,
-            "order": 1,
-            "validation": {
-              "pattern": "^[A-Z0-9]{20,120}$",
-              "errorMessage": "API Key must be a 60-character alphanumeric string."
-            },
-            "info": "Please provide your OPENAI API Key.",
+            "info": "Please provide your Digital Ocean Auth Token.",
             "external_help_url": "https://docs.aws.amazon.com/access-key-id"
           }
         ]
@@ -69,8 +30,8 @@
     ],
     "integrations": [
       {
-        "label": "OPENAI Project",
-        "type": "openai_project",
+        "label": "Digital Ocean Team",
+        "type": "digitalocean-team",
         "fields": []
       }
     ]
@@ -230,12 +191,7 @@
       {
         "type": "update",
         "label": "Update",
-        "editableFields": [
-          "api_key",
-          "project_id",
-          "project_name",
-          "organization_id"
-        ]
+        "editableFields": ["auth_token"]
       },
       {
         "type": "delete",

@@ -4,12 +4,13 @@ import (
 	"encoding/json"
 	"github.com/opengovern/og-describer-openai/platform/constants"
 "crypto/sha256"
-	"github.com/jackc/pgtype"
 	"github.com/opengovern/og-describer-openai/global"
 	"github.com/opengovern/og-describer-openai/global/maps"
 	"github.com/opengovern/og-util/pkg/integration"
 	"github.com/opengovern/og-util/pkg/integration/interfaces"
 	"encoding/hex"
+	"context"
+
 
 )
 
@@ -41,8 +42,9 @@ func (i *Integration) HealthCheck(jsonData []byte, providerId string, labels map
 		return false, err
 	}
 
-	isHealthy, err := OpenAIIntegrationHealthcheck(credentials.APIKey)
-	return isHealthy, err
+	return DigitalOceanTeamHealthcheck(context.TODO(), Config{
+		AuthToken: credentials.AuthToken,
+	})
 }
 
 func (i *Integration) DiscoverIntegrations(jsonData []byte) ([]integration.Integration, error) {
@@ -51,31 +53,19 @@ func (i *Integration) DiscoverIntegrations(jsonData []byte) ([]integration.Integ
 	if err != nil {
 		return nil, err
 	}
-	var integrations []integration.Integration
-	_, err = OpenAIIntegrationHealthcheck(credentials.APIKey)
-	if err != nil {
-		return nil, err
-	}
-	labels := map[string]string{
-		"OrganizationID": credentials.OrganizationID,
-	}
-	labelsJsonData, err := json.Marshal(labels)
-	if err != nil {
-		return nil, err
-	}
-	integrationLabelsJsonb := pgtype.JSONB{}
-	err = integrationLabelsJsonb.Set(labelsJsonData)
-	if err != nil {
-		return nil, err
-	}
-	providerID := hashSHA256(credentials.APIKey)
-	integrations = append(integrations, integration.Integration{
-		ProviderID: providerID,
-		Name:       credentials.ProjectName,
-		Labels:     integrationLabelsJsonb,
+	team, err := DigitalOceanTeamDiscovery(context.TODO(), Config{
+		AuthToken: credentials.AuthToken,
 	})
+	if err != nil {
+		return nil, err
+	}
 
-	return integrations, nil
+	return []integration.Integration{
+		{
+			ProviderID: team.ID,
+			Name:       team.Name,
+		},
+	}, nil
 }
 
 func (i *Integration) GetResourceTypesByLabels(labels map[string]string) (map[string]interfaces.ResourceTypeConfiguration, error) {

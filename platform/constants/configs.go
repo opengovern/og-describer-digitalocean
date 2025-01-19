@@ -13,10 +13,10 @@ var Manifest []byte
 var SetupMd []byte
 
 const (
-	IntegrationName = integration.Type("openai_integration") // example: aws_cloud, azure_subscription
+	IntegrationName = integration.Type("digitalocean_team") // example: aws_cloud, azure_subscription
 )
 
 const (
-	DescriberDeploymentName = "og-describer-openai"
-	DescriberRunCommand     = "/og-describer-openai"
+	DescriberDeploymentName = "og-describer-digitalocean"
+	DescriberRunCommand     = "/og-describer-digitalocean"
 )

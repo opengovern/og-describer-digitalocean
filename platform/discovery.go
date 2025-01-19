@@ -1,74 +1,36 @@
 package main
 
 import (
-	"encoding/json"
+	"context"
 	"errors"
-	"fmt"
-	"io/ioutil"
-	"net/http"
+	"github.com/digitalocean/godo"
 )
 
-type OrganizationResponse struct {
-	Data []struct {
-		ID string `json:"id"`
-		Personal bool `json:"personal"`
-	Projects       struct {
-		Data []struct {
-			ID   string `json:"id"`
-			Title string `json:"title"`
-		}
-	}
-	}
+type Config struct {
+	AuthToken string
 }
 
-type OrganizationResponseData struct {
-	ID string `json:"id"`
-		Personal bool `json:"personal"`
-	Projects       struct {
-		Data []struct {
-			ID   string `json:"id"`
-			Title string `json:"title"`
-		}
-	}
-}
-func OpenAIIntegrationDiscovery(apiKey string) (*OrganizationResponse, error) {
-	if apiKey == "" {
-		return nil, errors.New("API key is required")
-	}
-
-	// Define the endpoint
-	url := "https://api.openai.com/v1/organizations"
-
-	// Create HTTP request
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %v", err)
-	}
-
-	// Add headers
-	req.Header.Add("Authorization", "Bearer "+apiKey)
-
-	// Execute the request
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error making request: %v", err)
-	}
-	defer resp.Body.Close()
-
-	// Check for non-200 status codes
-	if resp.StatusCode != http.StatusOK {
-		body, _ := ioutil.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: %s, status code: %d", string(body), resp.StatusCode)
-	}
-
-	// Parse the response
-	var orgResponse OrganizationResponse
-	err = json.NewDecoder(resp.Body).Decode(&orgResponse)
-	if err != nil {
-		return nil, fmt.Errorf("error parsing response: %v", err)
-	}
-
-	return &orgResponse, nil
+type Team struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
 
+func DigitalOceanTeamDiscovery(ctx context.Context, config Config) (*Team, error) {
+	client := godo.NewFromToken(config.AuthToken)
+
+	account, resp, err := client.Account.Get(ctx)
+	if err != nil {
+		return nil, err
+	}
+	if resp.StatusCode != 200 {
+		return nil, err
+	}
+	if account.Team == nil {
+		return nil, errors.New("team not found")
+	}
+
+	return &Team{
+		ID:   account.Team.UUID,
+		Name: account.Team.Name,
+	}, nil
+}
