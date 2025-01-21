@@ -1,2 +1,5 @@
 IntegrationType: digitalocean_team
 DescriberURL:  ghcr.io/opengovern/og-describer-digitalocean
+Publisher: opencomply.io
+Author : opencomply engineering team
+SupportedPlatformVersion: 2.x.x
