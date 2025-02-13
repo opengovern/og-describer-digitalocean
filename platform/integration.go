@@ -1,17 +1,15 @@
 package main
 
 import (
+	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
-	"github.com/opengovern/og-describer-digitalocean/platform/constants"
-"crypto/sha256"
 	"github.com/opengovern/og-describer-digitalocean/global"
 	"github.com/opengovern/og-describer-digitalocean/global/maps"
+	"github.com/opengovern/og-describer-digitalocean/platform/constants"
 	"github.com/opengovern/og-util/pkg/integration"
 	"github.com/opengovern/og-util/pkg/integration/interfaces"
-	"encoding/hex"
-	"context"
-
-
 )
 
 type Integration struct{}
@@ -24,7 +22,7 @@ func (i *Integration) GetConfiguration() (interfaces.IntegrationConfiguration, e
 		NatsConsumerGroup:        global.ConsumerGroup,
 		NatsConsumerGroupManuals: global.ConsumerGroupManuals,
 
-		SteampipePluginName: "github",
+		SteampipePluginName: "digitalocean",
 
 		UISpec:   constants.UISpec,
 		Manifest: constants.Manifest,
@@ -68,18 +66,18 @@ func (i *Integration) DiscoverIntegrations(jsonData []byte) ([]integration.Integ
 	}, nil
 }
 func (i *Integration) GetResourceTypesByLabels(labels map[string]string) ([]interfaces.ResourceTypeConfiguration, error) {
-	var resourceTypesMap  []interfaces.ResourceTypeConfiguration
+	var resourceTypesMap []interfaces.ResourceTypeConfiguration
 	for _, resourceType := range maps.ResourceTypesList {
-		var resource  interfaces.ResourceTypeConfiguration
+		var resource interfaces.ResourceTypeConfiguration
 		if v, ok := maps.ResourceTypeConfigs[resourceType]; ok {
-			resource.Description =v.Description
-			resource.Params =v.Params
+			resource.Description = v.Description
+			resource.Params = v.Params
 			resource.Name = v.Name
 			resource.IntegrationType = v.IntegrationType
-			resource.Table =  maps.ResourceTypesToTables[v.Name]
+			resource.Table = maps.ResourceTypesToTables[v.Name]
 			resourceTypesMap = append(resourceTypesMap, resource)
-			
-		} 
+
+		}
 	}
 	return resourceTypesMap, nil
 }
@@ -113,7 +111,6 @@ func (i *Integration) ListAllTables() (map[string][]interfaces.CloudQLColumn, er
 func (i *Integration) Ping() error {
 	return nil
 }
-
 
 func hashSHA256(input string) string {
 	hash := sha256.New()
